@@ -631,7 +631,7 @@ try:
                     "[INSTALLED]" if mirrors_settings["pinterest"]["installed_path"] else ""),
 
                 tumblr='[SELECTED]' if 'tumblr' in mirrors_to_deploy else (
-                    "[INSTALLED]" if mirrors_settings["6"]["installed_path"] else ""),
+                    "[INSTALLED]" if mirrors_settings["tumblr"]["installed_path"] else ""),
 
                 facebook='[SELECTED]' if 'facebook' in mirrors_to_deploy else (
                     "[INSTALLED]" if mirrors_settings["facebook"]["installed_path"] else ""),
