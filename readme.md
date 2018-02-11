@@ -30,7 +30,7 @@
 * **我没有SSL证书 (如果不懂, 请使用这个)**
     ```bash
     sudo apt-get -y update && sudo apt-get -y install python3 git
-    git clone https://github.com/aploium/zmirror-onekey.git --depth=1
+    git clone https://github.com/zijie98/zmirror-onekey.git --depth=1
     cd zmirror-onekey
     sudo python3 deploy.py
     ```
