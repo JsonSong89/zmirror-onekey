@@ -23,12 +23,12 @@ except:
     warnprint = print
     importantprint = print
 
-__AUTHOR__ = 'Aploium <i@z.codes>'
+__AUTHOR__ = 'zijie98 <i@z.codes>'
 __VERSION__ = '0.12.1'
-__ZMIRROR_PROJECT_URL__ = 'https://github.com/aploium/zmirror/'
-__ZMIRROR_GIT_URL__ = 'https://github.com/aploium/zmirror.git'
-__ONKEY_PROJECT_URL__ = 'https://github.com/aploium/zmirror-onekey/'
-__ONKEY_PROJECT_URL_CONTENT__ = 'https://raw.githubusercontent.com/aploium/zmirror-onekey/master/'
+__ZMIRROR_PROJECT_URL__ = 'https://github.com/zijie98/zmirror/'
+__ZMIRROR_GIT_URL__ = 'https://github.com/zijie98/zmirror.git'
+__ONKEY_PROJECT_URL__ = 'https://github.com/zijie98/zmirror-onekey/'
+__ONKEY_PROJECT_URL_CONTENT__ = 'https://raw.githubusercontent.com/zijie98/zmirror-onekey/master/'
 REPORT_SUCCESS = "success"
 REPORT_ERROR = "error"
 __REPORT_URLS__ = {
@@ -396,6 +396,24 @@ mirrors_settings = {
         "certs": {},
         "installed_path": "",
     },
+    'pinterest': {
+        'domain': None,
+        'cfg': [('more_configs/config_pinterest.py', 'config.py'), ],
+        "certs": {},
+        "installed_path": "",
+    },
+    'tumblr': {
+        'domain': None,
+        'cfg': [('more_configs/config_thumblr.py', 'config.py'), ],
+        "certs": {},
+        "installed_path": "",
+    },
+    'facebook': {
+        'domain': None,
+        'cfg': [('more_configs/config_facebook.py', 'config.py'), ],
+        "certs": {},
+        "installed_path": "",
+    },
 }
 
 infoprint('OneKey deploy script for zmirror. version', __VERSION__)
@@ -585,9 +603,12 @@ try:
     {youtubePC}  4. youtube (PC ONLY)
     {youtubeMobile}  5. youtube (Mobile ONLY)
     {instagram}  6. instagram
+    {pinterest}  7. pinterest
+    {tumblr}  8. tumblr
+    {facebook}  9. facebook
       0. Go to next steps. (OK, I have selected all mirror(s) I want to deploy)
 
-    input 0-6: """.format(
+    input 0-9: """.format(
                 google='[SELECTED]' if 'google' in mirrors_to_deploy else (
                     "[INSTALLED]" if mirrors_settings["google"]["installed_path"] else ""),
 
@@ -605,6 +626,15 @@ try:
 
                 instagram='[SELECTED]' if 'instagram' in mirrors_to_deploy else (
                     "[INSTALLED]" if mirrors_settings["instagram"]["installed_path"] else ""),
+
+                pinterest='[SELECTED]' if 'pinterest' in mirrors_to_deploy else (
+                    "[INSTALLED]" if mirrors_settings["pinterest"]["installed_path"] else ""),
+
+                tumblr='[SELECTED]' if 'tumblr' in mirrors_to_deploy else (
+                    "[INSTALLED]" if mirrors_settings["tumblr"]["installed_path"] else ""),
+
+                facebook='[SELECTED]' if 'facebook' in mirrors_to_deploy else (
+                    "[INSTALLED]" if mirrors_settings["facebook"]["installed_path"] else ""),
             )
 
         )
@@ -623,8 +653,8 @@ try:
 
         if _input == 0:
             break
-        if not (0 <= _input <= 6):
-            errprint('please input correct number (0-6), only select one mirror a time\n'
+        if not (0 <= _input <= 9):
+            errprint('please input correct number (0-9), only select one mirror a time\n'
                      '-------------------------\n\n')
             continue
 
@@ -636,6 +666,9 @@ try:
             4: "youtubePC",
             5: "youtubeMobile",
             6: "instagram",
+            7: "pinterest",
+            8: "tumblr",
+            9: "facebook",
         }[_input]
 
         # 镜像已经安装, 则不允许选择
